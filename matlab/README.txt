@@ -2,6 +2,9 @@
 %% Spike-Train Communities Toolbox v1.2				   %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+Mark Humphries, 2011. 
+
+
 Put this folder of code somewhere, and add to your MATLAB path.
 
 All functions have extensive help documentation available from the MATLAB prompt.

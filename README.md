@@ -5,7 +5,7 @@ STCDT
 
 This repo hosts the current usable version of the Spike Train Community Detection toolbox developed by the Mark Humphries lab at the University of Manchester. Code included here implements the algorithms from _Humphries, M. D. (2011). Spike-train communities: finding groups of similar spike trains. The Journal of Neuroscience, 31(6), 2321-2336_ . A pdf of the paper is provided in this repo for reference.
 
-Matlab, python (minimal but working) and Spark (notebook format, very developmental)
+Matlab, python (minimal but working) and Spark (notebook format, very developmental) version of the code are provided.
 
 Each version of the code is at a different stage of development.
 

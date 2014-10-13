@@ -1,0 +1,39 @@
+Log of incremental changes to Spike Train Communities Toolbox
+
+v1.2 (12/6/2011)
+
+* [Bug fix] cluster_spike_data_bins.m, cluster_spike_data_binless.m: fixed error where choosing the rectified correlation 
+	coefficient option was unlikely to give any groups, because the resulting similarity matrix had 1s on the diagonal.
+	Now choosing this option gives similar, occasionally better, performance than 'cosine'.
+ 
+* [New feature] cluster_spike_data_bins.m, cluster_spike_data_binless.m: a new form of the analysis - if opts.blnGrph=1 
+	is selected, an undirected network (each entry a 0 or 1) is constructed, where each link corresponds to a 
+	significantly similar pair of spike-trains. The clustering algorithm is then run on this network. Significance is 
+	determined using a permutation test: a specified number of shuffled spike-train data-sets are created to obtain
+	p-values for each link. This option is useful for separating small N, long-period data-sets of noisy data. 
+	[Note that the memory requirements for this option are extensive, and depend on the number of permutations specified]
+
+
+* [New function] shuffle_intervals.m: given a spike-train data-set, creates a shuffled surrogate data-set in which each train 
+	is replaced with an ISI-shuffled version of itself. This maintains the same first-order (mean and variance) statistics 
+	of each spike-train, but disrupts correlations between trains.
+
+
+v1.1 (11/5/2011)
+
+* [Bug fix] cluster_spike_data_bins.m: fixed error where, if overlapping option used (opts.overlap > 0), the width of bin was 
+	set to the fraction of overlapping specified. Is now correctly set to the appropriate binsize.
+
+* [New feature] cluster_spike_data_bins.m, cluster_spike_data_binless.m: new option parameter, opts.blnS. If set to 1, 
+	will construct all similarity matrices, but will not run the clustering algorithm (the matrices can be returned 
+	in the existing optional output argument Sxy - see functions for help). This option is useful for e.g. reconstructing 
+	the similarity matrix after have done the groupings.
+ 
+
+* [New feature] plot_clusters.m: new optional argument CMAP. This argument specifies the MATLAB colormap to use when 
+	colour-coding each of the groups. This can be specified as either a string corresponding to one of MATLAB's 
+	built-in colormaps, or a 3 column array specifying a colormap (see COLORMAP for help). Particularly useful for 
+	specifying a colour for each of N groups - pass CMAP an Nx3 array, each row specifying the color of a group. 
+
+* [Further info] example_script.m now contains examples using all of these new features. It also contains code to 
+	allow plotting of group order by total similarity within each group (as a measure of intra-group organisation) 

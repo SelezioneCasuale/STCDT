@@ -19,5 +19,5 @@ A minimal implementation of the matlab example script written in 2013 by Thomas 
 Developmental code for a large scale implementation of the algorithms, currently in development by Mathew Evans.
 
 
-### Getting in touch
+#### Getting in touch
 If you have any enquiries about any part of the code contact me (Mat Evans) either here through github or via email [mathew.evans@manchester.ac.uk](mailto:mat.evans@sheffield.ac.uk "I have the internets")

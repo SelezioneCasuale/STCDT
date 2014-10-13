@@ -16,7 +16,7 @@ Most stable. Version 1.2 released on 12.6.2011. Written by Mark Humphries. The c
 A minimal implementation of the matlab example script written in 2013 by Thomas Sharp.
 
 ### Spark:
-Developmental code for a large scale implementation of the algorithms, currently in development by Mathew Evans.
+IPythob notebook for a large scale implementation of the algorithms, currently in development by Mathew Evans. The notebook can be viewed statically here : [http://nbviewer.ipython.org/github/mathewzilla/STCDT/blob/master/Spark/Community_Detection.ipynb](http://nbviewer.ipython.org/github/mathewzilla/STCDT/blob/master/Spark/Community_Detection.ipynb)
 
 
 #### Getting in touch

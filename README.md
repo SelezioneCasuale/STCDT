@@ -20,4 +20,4 @@ IPythob notebook for a large scale implementation of the algorithms, currently i
 
 
 #### Getting in touch
-If you have any enquiries about any part of the code contact me (Mat Evans) either here through github or via email [mathew.evans@manchester.ac.uk](mailto:mat.evans@sheffield.ac.uk "I have the internets")
+If you have any enquiries about any part of the code contact me (Mat Evans) either here through github or via email [mathew.evans@manchester.ac.uk](mailto:mathew.evans@manchester.ac.uk "I have the internets")

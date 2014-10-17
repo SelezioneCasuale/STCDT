@@ -13,7 +13,7 @@ Each version of the code is at a different stage of development.
 Most stable. Version 1.2 released on 12.6.2011. Written by Mark Humphries. The code here mirrors that available [here](http://www.systemsneurophysiologylab.ls.manchester.ac.uk/code/analysis/ "Humphries lab website").
 
 ### Spark:
-IPythob notebook for a large scale implementation of the algorithms, currently in development by Mathew Evans. The notebook can be viewed statically here : [http://nbviewer.ipython.org/github/mathewzilla/STCDT/blob/master/Spark/Community_Detection.ipynb](http://nbviewer.ipython.org/github/mathewzilla/STCDT/blob/master/Spark/Community_Detection.ipynb)
+IPython notebook for a large scale implementation of the algorithms, currently in development by Mathew Evans. The code was built on top of a python script written by Thomas Sharp @ Riken institute. The notebook can be viewed statically here : [http://nbviewer.ipython.org/github/mathewzilla/STCDT/blob/master/Spark/Community_Detection.ipynb](http://nbviewer.ipython.org/github/mathewzilla/STCDT/blob/master/Spark/Community_Detection.ipynb)
 
 
 #### Getting in touch

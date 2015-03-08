@@ -126,7 +126,8 @@ if __name__ == "__main__":
     # print bin_max
     # print bin_min
 
-    # Compute timescale distribution - check how Mark does it
+    # Compute timescale distribution - check how Mark does it. Could be a helper function called optionally,
+    # or a separate method entirely only called if user feels like it (I like the former with option for the latter)
     # Set up binwidths
     t_reps = 7
     bins = linspace(bin_min, bin_max, t_reps)
@@ -136,7 +137,7 @@ if __name__ == "__main__":
     timescales = timescales[timescales >= 1.]
     print timescales[0]
 
-    # Convolution. This is the start of the main loop.
+    # Convolution. This is the start of the main loop. Probably doable with existing tools
     # i = 1
     spks_conv = spks.map(lambda (k,v): (k, convolve_series(v, timescales[0])))
 
@@ -148,6 +149,9 @@ if __name__ == "__main__":
     SC = array(SC)
     # plt.plot(SC)
     # plt.show()
+
+    # Next section is pure Spark/Thunder end to end. Should be called all at once with no caching.
+    # svd.u and n_units is cached ahead of clustering. A different svd.u would be generated for each tested timescale.
 
     # Compute similarity matrix
     A = spks_conv.map(lambda (k,v): (k, compute_similarity(v, SC)))
@@ -175,7 +179,7 @@ if __name__ == "__main__":
     n_units, n_features = svd.v.T.shape
     data = svd.u
 
-    # Collect a local copy for computing Q. Should be done with a reduce step instead
+    # Collect a local copy for computing Q. Should be done with a reduce step instead, or some kind of RDD join thing
     b_local = B.collect()
 
     # Cluster with MLlib Kmeans
@@ -183,6 +187,11 @@ if __name__ == "__main__":
     L = empty((n_features, n_units))
 
     # Build the model (cluster the data)
+    # This loop is THE community detection methodology loop
+    # Method is spectral clustering, followed by a computation of cluster quality, so need methods for both which we can
+    # run in parallel over range of K defined by positive eigenvalues.
+    # data vector (svd.u) can be cached to speed this up
+    # Is it possible to iterate this until convergence instead of running all values blindly? How does Mark do it?
     for i in range(n_features):
         K = i+2
         clusters = KMeans.train(data.values(), K, maxIterations=100, runs=100, initializationMode="k-means||")
@@ -195,6 +204,8 @@ if __name__ == "__main__":
             S[n, Labels[n][1]] = 1
 
         # Compute clustering quality (eq. 11 in the paper)
+        # End up with a q for each K and each timescale. Each partition keeps its own best Q, along with K/timescale responsible
+        # Probably trivial to recompute best clustering with appropriate params so maybe not worth saving each cluster assignment
         q = matrix.trace(dot(dot(S.T, b_local), S))
 
         # Save best result
